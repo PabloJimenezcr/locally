@@ -1,0 +1,52 @@
+@use "../abstracts/variables.scss" as *;
+  body {
+            overflow-x: hidden;
+            background-color: $whiteColor;
+            font-family: $secondaryFont;
+
+            p {
+                font-family: $secondaryFont;
+                font-size: 18px;
+                color: $colorP;
+            }
+
+            button {
+                font-family: $secondaryFont;
+            }
+
+            h1,
+            h2,
+            h4,
+            h5,
+            h6 {
+                font-weight: bold;
+                font-family: $primaryFont;
+                letter-spacing: 1.5px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            textarea {
+                resize: none;
+            }
+
+            .iconTitles {
+                width: 50px;
+            }
+
+            .btnHome {
+                border: 2px solid $primaryColor;
+                color: $colorP;
+                padding: 15px 25px;
+                border-radius: 8px;
+                font-size: 18px;
+                transition: all 0.4s ease-in;
+
+                &:hover {
+                    background-color: $primaryColor;
+                    color: $whiteColor;
+                }
+            }
+        }

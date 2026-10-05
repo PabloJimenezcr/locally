@@ -1,0 +1,88 @@
+.propertyCard {
+  display: block;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 8px rgba(44, 60, 47, 0.1);
+  transition: 0.3s;
+  text-decoration: none;
+  color: initial;
+}
+.propertyCard:hover {
+  transform: translateY(-8px);
+  color: #010101;
+}
+.propertyCard .propertyImg {
+  position: relative;
+  margin-top: 15px;
+}
+.propertyCard .propertyImg img {
+  width: 95%;
+  filter: brightness(0.8);
+  border-radius: 10px;
+}
+.propertyCard .propertyImg .badges {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  gap: 8px;
+}
+.propertyCard .propertyImg .badges p {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #fff;
+}
+.propertyCard .propertyImg .badges .featured {
+  background: #334d20;
+}
+.propertyCard .propertyImg .badges .sale {
+  background: #0a3452;
+}
+.propertyCard .propertyImg .badges .inactive {
+  background-color: #0a3452;
+}
+.propertyCard .propertyImg .location {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  color: #fff;
+  font-size: 15px;
+}
+.propertyCard .bodyCard {
+  padding: 18px;
+}
+.propertyCard .bodyCard h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.propertyCard .bodyCard .propertyFeatures {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+.propertyCard .bodyCard .propertyFeatures p {
+  font-size: 17px;
+}
+.propertyCard .bodyCard .propertyFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+  font-size: 17px;
+}
+.propertyCard .bodyCard .propertyFooter .agent {
+  display: flex;
+  align-items: center;
+}
+.propertyCard .bodyCard .propertyFooter .agent img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}/*# sourceMappingURL=cards.css.map */

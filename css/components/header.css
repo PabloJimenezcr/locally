@@ -1,0 +1,63 @@
+header {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  z-index: 100;
+}
+header.hProperty {
+  background-color: #334d20;
+  height: 100%;
+}
+header img {
+  width: 155px;
+}
+header nav .navbar-nav {
+  display: flex;
+  align-items: center;
+}
+header nav .navbar-nav .nav-link {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 15px;
+}
+header nav a {
+  margin-right: 20px;
+}
+header .btnMobileMenu,
+header .offcanvas {
+  display: none;
+}
+header .offcanvas {
+  background-color: #334d20;
+  z-index: 9999999;
+}
+header .offcanvas img {
+  width: 110px;
+}
+header .offcanvas button {
+  color: #334d20;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+}
+header .btnMobileMenu {
+  color: #334d20;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+@media (max-width: 1024px) {
+  header nav .btnMobileMenu,
+  header nav .offcanvas {
+    display: block;
+  }
+  header nav .offcanvas a {
+    color: #000;
+  }
+  header nav .desktopMenu {
+    display: none;
+  }
+}/*# sourceMappingURL=header.css.map */

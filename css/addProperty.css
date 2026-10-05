@@ -1,0 +1,843 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #fff;
+  font-family: "Jost", sans-serif;
+}
+body p {
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  color: #010101;
+}
+body button {
+  font-family: "Jost", sans-serif;
+}
+body h1,
+body h2,
+body h4,
+body h5,
+body h6 {
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1.5px;
+}
+body a {
+  text-decoration: none;
+}
+body textarea {
+  resize: none;
+}
+body .iconTitles {
+  width: 50px;
+}
+body .btnHome {
+  border: 2px solid #334d20;
+  color: #010101;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: all 0.4s ease-in;
+}
+body .btnHome:hover {
+  background-color: #334d20;
+  color: #fff;
+}
+
+.propertyCard {
+  display: block;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 8px rgba(44, 60, 47, 0.1);
+  transition: 0.3s;
+  text-decoration: none;
+  color: initial;
+}
+.propertyCard:hover {
+  transform: translateY(-8px);
+  color: #010101;
+}
+.propertyCard .propertyImg {
+  position: relative;
+  margin-top: 15px;
+}
+.propertyCard .propertyImg img {
+  width: 95%;
+  filter: brightness(0.8);
+  border-radius: 10px;
+}
+.propertyCard .propertyImg .badges {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  gap: 8px;
+}
+.propertyCard .propertyImg .badges p {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #fff;
+}
+.propertyCard .propertyImg .badges .featured {
+  background: #334d20;
+}
+.propertyCard .propertyImg .badges .sale {
+  background: #0a3452;
+}
+.propertyCard .propertyImg .badges .inactive {
+  background-color: #0a3452;
+}
+.propertyCard .propertyImg .location {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  color: #fff;
+  font-size: 15px;
+}
+.propertyCard .bodyCard {
+  padding: 18px;
+}
+.propertyCard .bodyCard h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.propertyCard .bodyCard .propertyFeatures {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+.propertyCard .bodyCard .propertyFeatures p {
+  font-size: 17px;
+}
+.propertyCard .bodyCard .propertyFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+  font-size: 17px;
+}
+.propertyCard .bodyCard .propertyFooter .agent {
+  display: flex;
+  align-items: center;
+}
+.propertyCard .bodyCard .propertyFooter .agent img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.mobile-nav {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: #fff;
+  border-radius: 20px;
+  padding: 10px 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+.mobile-nav .nav-item {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: #010101;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.mobile-nav .nav-item i {
+  font-size: 20px;
+}
+.mobile-nav .nav-item.active {
+  background-color: #334d20;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+header .logo {
+  font-weight: 600;
+  color: #334d20;
+}
+header .search-input {
+  width: 250px;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+  background-color: #e9ecef;
+}
+header .add-btn {
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: #334d20;
+  border: none;
+}
+header .avatar-dropdown .avatar {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  backface-visibility: hidden;
+}
+header .avatar-dropdown .avatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+header .avatar-dropdown .avatar:hover {
+  transform: scale(1.05);
+}
+header .avatar-dropdown .custom-dropdown {
+  border: none;
+  border-radius: 14px;
+  padding: 10px;
+  min-width: 200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+header .avatar-dropdown .custom-dropdown .dropdown-header {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+}
+header .avatar-dropdown .custom-dropdown .dropdown-header strong {
+  font-size: 16px;
+}
+header .avatar-dropdown .custom-dropdown .dropdown-header small {
+  color: #888;
+  font-size: 13px;
+}
+header .avatar-dropdown .custom-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px 12px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  backface-visibility: hidden;
+}
+header .avatar-dropdown .custom-dropdown .dropdown-item i {
+  font-size: 18px;
+}
+header .avatar-dropdown .custom-dropdown .dropdown-item:hover {
+  background-color: #f5f5f5;
+  transform: translateX(3px);
+}
+header .avatar-dropdown .custom-dropdown .logout {
+  color: #dc3545;
+}
+header .avatar-dropdown .custom-dropdown .logout:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+}
+header {
+  /* =====================================================
+       BACK BUTTON
+    ===================================================== */
+}
+header .btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  color: #334d20;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+header .btn-back i {
+  font-size: 21px;
+  line-height: 1;
+}
+header .btn-back:hover {
+  background-color: rgba(51, 77, 32, 0.08);
+  transform: translateX(-2px);
+}
+header .btn-back:active {
+  transform: translateX(-4px);
+}
+header .btn-back:focus-visible {
+  outline: 2px solid #0a3452;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+.custom-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================================
+   HEADER CARD
+========================================================= */
+.card-header-custom .step {
+  background-color: #334d20;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 20px;
+}
+.card-header-custom h2 {
+  font-weight: 600;
+  color: #010101;
+  font-size: 20px;
+}
+
+/* =========================================================
+   LABELS
+========================================================= */
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #010101;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+.custom-input {
+  background-color: #f1f1f1;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  height: 45px;
+  font-size: 14px;
+  transition: border-color 0.3s ease-in, background-color 0.3s ease-in;
+}
+.custom-input:focus {
+  box-shadow: none;
+  border-color: #334d20;
+}
+
+/* =========================================================
+   COUNTER
+========================================================= */
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  height: 45px;
+  padding: 0 10px;
+}
+.counter span {
+  font-weight: 600;
+}
+.counter button {
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  color: #334d20;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.counter button:hover {
+  opacity: 0.7;
+}
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+}
+.custom-checkbox input {
+  display: none;
+}
+.custom-checkbox span {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+}
+.custom-checkbox input:checked + span {
+  background-color: #334d20;
+  border-color: #334d20;
+}
+.custom-checkbox input:checked + span::after {
+  content: "✔";
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  top: -2px;
+  left: 3px;
+}
+
+/* =========================================================
+   TAG INPUT
+========================================================= */
+.tag-input {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+.tag-input input {
+  flex: 1;
+  border: none;
+  background-color: transparent;
+  padding: 8px;
+  font-size: 14px;
+}
+.tag-input input:focus {
+  outline: none;
+}
+.tag-input button {
+  border: none;
+  background-color: #334d20;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* =========================================================
+   TAGS
+========================================================= */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.tags span {
+  background-color: #334d20;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tags span i {
+  cursor: pointer;
+}
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+.textarea {
+  min-height: 140px !important;
+  resize: none;
+}
+
+/* =========================================================
+   STICKY
+========================================================= */
+.sticky-side {
+  position: sticky;
+  top: 20px;
+}
+
+/* =========================================================
+   GALLERY HEADER
+========================================================= */
+.gallery-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+}
+
+.gallery-help {
+  margin: 0 0 14px;
+  color: #999;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  /* =====================================================
+       COMMON SLOTS
+    ===================================================== */
+}
+.gallery .img-box,
+.gallery .upload-slot {
+  position: relative;
+  height: 110px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.gallery .img-box img,
+.gallery .upload-slot img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  display: block;
+}
+.gallery {
+  /* =====================================================
+       UPLOAD SLOT
+    ===================================================== */
+}
+.gallery .upload-slot {
+  position: relative;
+  border: 2px dashed #d9ddd8;
+  background-color: #fafbf9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery .upload-slot:hover {
+  border-color: #334d20;
+  background-color: rgba(51, 77, 32, 0.035);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.07);
+}
+.gallery .upload-slot:has(input.file-input:focus-visible) {
+  outline: 2px solid #334d20;
+  outline-offset: 3px;
+}
+.gallery .upload-slot {
+  /* =================================================
+         MAIN PHOTO
+      ================================================= */
+}
+.gallery .upload-slot.primary-slot {
+  grid-column: 1/-1;
+  height: 165px;
+  border: 2px dashed rgba(51, 77, 32, 0.35);
+  background: linear-gradient(135deg, rgba(51, 77, 32, 0.04), rgba(51, 77, 32, 0.01));
+}
+.gallery .upload-slot.primary-slot:hover {
+  border-color: #334d20;
+  background: linear-gradient(135deg, rgba(51, 77, 32, 0.07), rgba(51, 77, 32, 0.02));
+}
+.gallery .upload-slot {
+  /* =================================================
+         FILE INPUT
+      ================================================= */
+}
+.gallery .upload-slot input.file-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 5;
+}
+.gallery .upload-slot {
+  /* =================================================
+         CONTENT
+      ================================================= */
+}
+.gallery .upload-slot .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  color: #999;
+  pointer-events: none;
+}
+.gallery .upload-slot .content i {
+  font-size: 23px;
+  color: #334d20;
+}
+.gallery .upload-slot .content span {
+  font-size: 12px;
+  font-weight: 500;
+}
+.gallery .upload-slot {
+  /* =================================================
+         PREVIEW
+      ================================================= */
+}
+.gallery .upload-slot .existing-image-preview,
+.gallery .upload-slot .image-preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  display: block;
+  z-index: 1;
+}
+.gallery .upload-slot {
+  /* =================================================
+         REMOVE BUTTON
+      ================================================= */
+}
+.gallery .upload-slot .remove-existing-image,
+.gallery .upload-slot .remove-image {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 20;
+  width: 33px;
+  height: 33px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.68);
+  color: #fff;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.gallery .upload-slot .remove-existing-image i,
+.gallery .upload-slot .remove-image i {
+  font-size: 18px;
+  line-height: 1;
+  pointer-events: none;
+}
+.gallery .upload-slot .remove-existing-image:hover,
+.gallery .upload-slot .remove-image:hover {
+  background-color: #dc3545;
+  transform: scale(1.08);
+  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.22);
+}
+.gallery .upload-slot .remove-existing-image:active,
+.gallery .upload-slot .remove-image:active {
+  transform: scale(0.95);
+}
+.gallery .upload-slot .remove-existing-image:focus-visible,
+.gallery .upload-slot .remove-image:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.gallery {
+  /* =====================================================
+       IMAGE BOX
+    ===================================================== */
+}
+.gallery .img-box .remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 20;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.68);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.gallery .img-box .remove:hover {
+  background-color: #dc3545;
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   MAP
+========================================================= */
+.map {
+  height: 250px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+.map-search {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+.map-search i {
+  color: #999;
+  margin-right: 8px;
+}
+.map-search input {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+}
+.map-search input:focus {
+  outline: none;
+}
+
+/* =========================================================
+   SAVE BUTTON
+========================================================= */
+.btn-save {
+  background-color: #334d20;
+  color: #fff;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(51, 77, 32, 0.16);
+}
+.btn-save:focus-visible {
+  outline: 2px solid #334d20;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   CANCEL
+========================================================= */
+.btnCancel {
+  background-color: transparent;
+  color: #010101;
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px solid #334d20;
+  transition: background-color 0.4s ease-in, color 0.4s ease-in;
+  text-align: center;
+}
+.btnCancel:hover {
+  background-color: #334d20;
+  color: #fff;
+}
+
+/* =========================================================
+   STATUS BOX
+========================================================= */
+.box {
+  padding: 25px 70px;
+  background-color: #e0e3e5;
+  color: #010101;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.4s ease-in, border-color 0.4s ease-in, color 0.4s ease-in;
+}
+.box p {
+  margin-top: 5px;
+}
+.box.active {
+  background-color: #334d20;
+  border-color: #334d20;
+  color: #fff;
+}
+.box.active i,
+.box.active p {
+  color: #fff;
+}
+.box:hover {
+  border-color: #334d20;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 576px) {
+  .btn-back {
+    padding: 9px;
+  }
+  .btn-back span {
+    display: none;
+  }
+  .gallery-count {
+    font-size: 10px;
+  }
+  .gallery-help {
+    font-size: 11px;
+  }
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .gallery .upload-slot {
+    height: 95px;
+  }
+  .gallery .upload-slot.primary-slot {
+    height: 145px;
+  }
+}
+/* =========================================================
+   FORM CONTAINER
+========================================================= */
+.form-container {
+  margin-bottom: 120px;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .gallery .upload-slot {
+    transition: none;
+  }
+  .gallery .image-preview {
+    transition: none;
+  }
+}/*# sourceMappingURL=addProperty.css.map */

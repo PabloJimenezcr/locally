@@ -1,0 +1,82 @@
+@use '../abstracts/variables.scss' as *;
+
+header {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    z-index: 100;
+
+    &.hProperty {
+        background-color: $primaryColor;
+        height: 100%;
+    }
+
+    img {
+        width: 155px;
+    }
+
+    nav {
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+
+            .nav-link {
+                color: $whiteColor;
+                font-size: 20px;
+                margin-right: 15px;
+            }
+        }
+
+        a {
+            margin-right: 20px;
+        }
+    }
+
+    .btnMobileMenu,
+    .offcanvas {
+        display: none;
+    }
+
+    .offcanvas {
+        background-color: $primaryColor;
+        z-index: 9999999;
+
+        img {
+            width: 110px;
+        }
+
+        button {
+            color: $primaryColor;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: $whiteColor;
+        }
+    }
+
+    .btnMobileMenu {
+        color: $primaryColor;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: $whiteColor;
+    }
+}
+
+@media (max-width: 1024px) {
+    header nav {
+
+        .btnMobileMenu,
+        .offcanvas {
+            display: block;
+        }
+
+        .offcanvas a {
+            color: #000;
+        }
+
+        .desktopMenu {
+            display: none;
+        }
+    }
+}

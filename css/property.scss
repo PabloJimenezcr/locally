@@ -1,0 +1,1464 @@
+@use './abstracts/variables' as *;
+@use './base/reset';
+@use './base/base';
+@use './components/header';
+@use './components/footer';
+
+
+/* =========================================================
+   PROPERTY NAME
+========================================================= */
+
+.pName {
+
+    h1 {
+        background-color: $primaryColor;
+        color: $whiteColor;
+
+        padding: 15px 25px;
+
+        text-align: center;
+
+        border-radius: 8px;
+
+        font-weight: 700;
+        line-height: 1.2;
+
+        box-shadow:
+            0 10px 25px rgba(0, 0, 0, .08);
+    }
+
+
+    .btn-edit-property {
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+
+        padding: 13px 20px;
+
+        background-color: $primaryColor;
+        color: $whiteColor;
+
+        border: 1px solid $primaryColor;
+        border-radius: 10px;
+
+        text-decoration: none;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        transition:
+            background-color .3s ease,
+            color .3s ease,
+            transform .3s ease,
+            box-shadow .3s ease;
+
+
+        i {
+            font-size: 18px;
+        }
+
+
+        &:hover {
+
+            background-color: transparent;
+            color: $primaryColor;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(51, 77, 32, .10);
+
+        }
+
+
+        &:focus-visible {
+
+            outline: 2px solid $primaryColor;
+            outline-offset: 4px;
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   PROPERTY GALLERY
+========================================================= */
+
+.gallery-slider {
+
+    position: relative;
+
+    .main-slider {
+
+        position: relative;
+
+        width: 100%;
+
+        overflow: hidden;
+
+        border-radius: 24px;
+
+        background-color: #151a16;
+
+        box-shadow:
+            0 25px 60px rgba(0, 0, 0, .12);
+
+        isolation: isolate;
+
+
+        &::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            height: 25%;
+
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, .20),
+                    transparent);
+            pointer-events: none;
+            z-index: 2;
+
+        }
+
+
+        .main-img {
+
+            width: 100%;
+
+            height: clamp(360px,
+                    48vw,
+                    560px);
+
+            object-fit: cover;
+
+            object-position: center;
+
+            display: block;
+
+            background-color: #151a16;
+
+            backface-visibility: hidden;
+
+            user-select: none;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       IMAGE TRANSITION
+    ===================================================== */
+
+    .fade-effect {
+
+        transition:
+            opacity .45s ease,
+            transform .45s ease,
+            filter .45s ease;
+
+        backface-visibility: hidden;
+
+
+        &.fade-out {
+
+            opacity: 0;
+
+            transform: scale(1.035);
+
+            filter: blur(2px);
+
+        }
+
+    }
+
+
+    /* =====================================================
+       NAVIGATION BUTTONS
+    ===================================================== */
+
+    .nav-btn {
+
+        position: absolute;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        width: 52px;
+        height: 52px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid rgba(255,
+                255,
+                255,
+                .25);
+
+        border-radius: 50%;
+
+        background-color: rgba(15,
+                20,
+                17,
+                .65);
+
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+
+        color: $whiteColor;
+
+        font-size: 24px;
+
+        cursor: pointer;
+
+        z-index: 10;
+
+        box-shadow:
+            0 12px 25px rgba(0, 0, 0, .18);
+
+        transition:
+            background-color .25s ease,
+            border-color .25s ease,
+            transform .25s ease,
+            box-shadow .25s ease;
+
+
+        &:hover {
+
+            background-color: $primaryColor;
+
+            border-color: $primaryColor;
+
+            transform:
+                translateY(-50%) scale(1.08);
+
+            box-shadow:
+                0 15px 30px rgba(0,
+                    0,
+                    0,
+                    .20);
+
+        }
+
+
+        &:active {
+
+            transform:
+                translateY(-50%) scale(.96);
+
+        }
+
+
+        &:focus-visible {
+
+            outline: 2px solid $whiteColor;
+            outline-offset: 3px;
+
+        }
+
+
+        i {
+
+            line-height: 1;
+
+        }
+
+    }
+
+
+    .prev {
+
+        left: 18px;
+
+    }
+
+
+    .next {
+
+        right: 18px;
+
+    }
+
+
+    /* =====================================================
+       THUMBNAILS
+    ===================================================== */
+
+    .thumbs-wrapper {
+
+        display: flex;
+
+        gap: 12px;
+
+        width: 100%;
+
+        padding: 4px 2px 10px;
+
+        overflow-x: auto;
+
+        overflow-y: hidden;
+
+        scroll-behavior: smooth;
+
+        scrollbar-width: thin;
+
+        scrollbar-color:
+            rgba(51, 77, 32, .35) transparent;
+
+
+        &::-webkit-scrollbar {
+
+            height: 7px;
+
+        }
+
+
+        &::-webkit-scrollbar-track {
+
+            background: transparent;
+
+        }
+
+
+        &::-webkit-scrollbar-thumb {
+
+            background-color:
+                rgba(51, 77, 32, .30);
+
+            border-radius: 999px;
+
+        }
+
+    }
+
+
+    .thumb {
+
+        position: relative;
+
+        flex: 0 0 108px;
+
+        width: 108px;
+        height: 82px;
+
+        padding: 0;
+
+        border: 2px solid transparent;
+
+        border-radius: 14px;
+
+        overflow: hidden;
+
+        background-color: #f1f2ef;
+
+        cursor: pointer;
+
+        opacity: .62;
+
+        box-shadow:
+            0 5px 15px rgba(0, 0, 0, .06);
+
+        transition:
+            opacity .3s ease,
+            border-color .3s ease,
+            transform .3s ease,
+            box-shadow .3s ease;
+
+        backface-visibility: hidden;
+
+
+        img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            display: block;
+
+            transition:
+                transform .45s ease;
+
+        }
+
+
+        /* hover */
+
+        &:hover {
+
+            opacity: 1;
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 24px rgba(0,
+                    0,
+                    0,
+                    .10);
+
+
+            img {
+
+                transform:
+                    scale(1.06);
+
+            }
+
+        }
+
+
+        /* ACTIVE */
+
+        &.active {
+
+            opacity: 1;
+
+            border-color:
+                $primaryColor;
+
+            box-shadow:
+                0 10px 28px rgba(51,
+                    77,
+                    32,
+                    .18);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        &:focus-visible {
+
+            outline:
+                2px solid $primaryColor;
+
+            outline-offset: 3px;
+
+        }
+
+    }
+
+
+}
+
+
+/* =========================================================
+   PROPERTY CONTENT
+========================================================= */
+
+.property-detail {
+
+    p {
+
+        color: $colorP;
+
+        line-height: 1.75;
+
+    }
+
+
+    .section-title {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        margin-bottom: 15px;
+
+        color: $primaryColor;
+
+        font-weight: 600;
+
+
+        i {
+
+            font-size: 22px;
+
+        }
+
+    }
+
+
+    iframe {
+
+        border-radius: 16px;
+
+        box-shadow:
+            0 12px 30px rgba(0,
+                0,
+                0,
+                .08);
+
+    }
+
+
+    /* =====================================================
+       OVERVIEW
+    ===================================================== */
+
+    .overview-grid {
+
+        background-color:
+            $primaryColor;
+
+        border-radius: 18px;
+
+        padding: 28px;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit,
+                minmax(230px, 1fr));
+
+        gap: 25px;
+
+        box-shadow:
+            0 18px 40px rgba(51,
+                77,
+                32,
+                .12);
+
+    }
+
+
+    .overview-item {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+
+        color: $whiteColor;
+
+        transition:
+            transform .25s ease;
+
+        backface-visibility: hidden;
+
+
+        &:hover {
+
+            transform:
+                translateY(-3px);
+
+        }
+
+
+        i {
+
+            font-size: 22px;
+
+        }
+
+
+        .overview-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            flex-shrink: 0;
+
+            border:
+                1px solid rgba(255,
+                    255,
+                    255,
+                    .55);
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition:
+                background-color .25s ease;
+
+
+            .overview-item:hover & {
+
+                background-color:
+                    rgba(255,
+                        255,
+                        255,
+                        .10);
+
+            }
+
+
+            i {
+
+                font-size: 22px;
+
+            }
+
+        }
+
+
+        .overview-text {
+
+
+            span {
+
+                display: block;
+
+                margin-bottom: 2px;
+
+                font-size: 14px;
+
+                opacity: .85;
+
+            }
+
+
+            strong {
+
+                font-size: 15px;
+
+                font-weight: 600;
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       FEATURES
+    ===================================================== */
+
+    .features-list {
+
+        ul {
+
+            padding-left: 0;
+
+            list-style: none;
+
+
+            li {
+
+                margin-bottom: 10px;
+
+                color: $colorP;
+
+
+                i {
+
+                    margin-right: 5px;
+
+                    color: $primaryColor;
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       STICKY SIDE
+    ===================================================== */
+
+    .sticky-wrapper {
+
+        position: sticky;
+
+        top: 100px;
+
+    }
+
+
+    /* =====================================================
+       CONTACT CARD
+    ===================================================== */
+
+    .contact-card {
+
+        background-color:
+            $primaryColor;
+
+        padding: 25px;
+
+        border-radius: 18px;
+
+        color: $whiteColor;
+
+        box-shadow:
+            0 18px 40px rgba(0,
+                0,
+                0,
+                .10);
+
+
+        h5,
+        .h5 {
+
+            margin-bottom: 20px;
+
+            font-weight: 600;
+
+        }
+
+
+        .form-control {
+
+            border: none;
+
+            border-radius: 10px;
+
+        }
+
+
+        .input-group-text {
+
+            background-color: transparent;
+
+            border:
+                1px solid $whiteColor;
+
+            color: $whiteColor;
+
+            border-radius: 10px;
+
+        }
+
+
+        .btn-send {
+
+            background-color: transparent;
+
+            border:
+                2px solid $whiteColor;
+
+            color: $whiteColor;
+
+            border-radius: 10px;
+
+            transition:
+                background-color .3s ease,
+                color .3s ease,
+                transform .3s ease;
+
+
+            &:hover {
+
+                background-color:
+                    $whiteColor;
+
+                color:
+                    $primaryColor;
+
+                transform:
+                    translateY(-2px);
+
+            }
+
+
+            &:focus-visible {
+
+                outline:
+                    2px solid $whiteColor;
+
+                outline-offset: 3px;
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       AUTHOR
+    ===================================================== */
+
+    .author-card {
+
+        background-color:
+            $primaryColor;
+
+        border-radius: 18px;
+
+        margin-bottom: 120px;
+
+        padding: 20px;
+
+        color: $whiteColor;
+
+        box-shadow:
+            0 18px 40px rgba(0,
+                0,
+                0,
+                .10);
+
+
+        h6,
+        .h6 {
+
+            margin-bottom: 15px;
+
+            font-weight: 600;
+
+        }
+
+
+        .author-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+
+            img {
+
+                width: 60px;
+
+                height: 60px;
+
+                border-radius: 50%;
+
+                object-fit: cover;
+
+                display: block;
+
+                border:
+                    2px solid rgba(255,
+                        255,
+                        255,
+                        .30);
+
+            }
+
+
+            .ubication {
+
+                color:
+                    $whiteColor;
+
+            }
+
+        }
+
+
+        .author-info {
+
+            list-style: none;
+
+            padding-left: 0;
+
+            margin-top: 15px;
+
+            margin-bottom: 0;
+
+
+            li {
+
+                margin-bottom: 10px;
+
+
+                i {
+
+                    margin-right: 6px;
+
+                }
+
+
+                a {
+
+                    text-decoration: none;
+
+                    color: $whiteColor;
+
+                    transition:
+                        opacity .25s ease;
+
+
+                    &:hover {
+
+                        opacity: .75;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   CONTACT ANTI BOT
+========================================================= */
+
+.contact-hp {
+
+    position: absolute !important;
+
+    left: -9999px !important;
+
+    top: auto !important;
+
+    width: 1px !important;
+
+    height: 1px !important;
+
+    overflow: hidden !important;
+
+    opacity: 0 !important;
+
+    pointer-events: none !important;
+
+}
+
+
+/* =========================================================
+   WHATSAPP FLOAT
+========================================================= */
+
+.whatsappFloat {
+
+    position: fixed;
+
+    right: 30px;
+
+    bottom: 100px;
+
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background-color:
+        #25d366;
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    z-index: 999;
+
+    box-shadow:
+        0 10px 25px rgba(37, 211, 102, .25),
+        0 4px 10px rgba(0, 0, 0, .08);
+
+    transition:
+        width .4s cubic-bezier(.4, 0, .2, 1),
+        border-radius .4s ease,
+        box-shadow .35s ease,
+        transform .35s ease;
+
+    overflow: visible;
+
+
+    .whatsappIcon {
+
+        position: relative;
+
+        width: 58px;
+
+        height: 58px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        flex-shrink: 0;
+
+        color: $whiteColor;
+
+
+        i {
+
+            font-size: 29px;
+
+            line-height: 1;
+
+            transition:
+                transform .35s ease;
+
+        }
+
+    }
+
+
+    .whatsappText {
+
+        max-width: 0;
+
+        margin-left: 0;
+
+        opacity: 0;
+
+        overflow: hidden;
+
+        white-space: nowrap;
+
+        color: $whiteColor;
+
+        font-family: $primaryFont;
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        letter-spacing: .2px;
+
+        transition:
+            max-width .4s ease,
+            margin-left .4s ease,
+            opacity .25s ease;
+
+    }
+
+
+    .whatsappDot {
+
+        position: absolute;
+
+        top: 4px;
+
+        right: 4px;
+
+        width: 9px;
+
+        height: 9px;
+
+        background-color:
+            $whiteColor;
+
+        border:
+            2px solid #25d366;
+
+        border-radius: 50%;
+
+    }
+
+
+    .whatsappPulse {
+
+        position: absolute;
+
+        inset: -5px;
+
+        border:
+            1px solid rgba(37,
+                211,
+                102,
+                .45);
+
+        border-radius: 50%;
+
+        animation:
+            whatsappPulse 2.2s ease-out infinite;
+
+        pointer-events: none;
+
+    }
+
+
+    &:hover {
+
+        width: 155px;
+
+        border-radius: 32px;
+
+        transform:
+            translateY(-3px);
+
+        box-shadow:
+            0 16px 35px rgba(37, 211, 102, .30),
+            0 8px 18px rgba(0, 0, 0, .10);
+
+
+        .whatsappIcon i {
+
+            transform:
+                scale(1.08) rotate(-8deg);
+
+        }
+
+
+        .whatsappText {
+
+            max-width: 90px;
+
+            margin-left: 2px;
+
+            opacity: 1;
+
+        }
+
+
+        .whatsappPulse {
+
+            animation-play-state:
+                paused;
+
+        }
+
+    }
+
+
+    &:focus-visible {
+
+        outline:
+            2px solid $primaryColor;
+
+        outline-offset: 4px;
+
+    }
+
+}
+
+
+@keyframes whatsappPulse {
+
+    0% {
+
+        transform:
+            scale(1);
+
+        opacity: .8;
+
+    }
+
+
+    70% {
+
+        transform:
+            scale(1.18);
+
+        opacity: 0;
+
+    }
+
+
+    100% {
+
+        transform:
+            scale(1.18);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .property-detail {
+
+        .sticky-wrapper {
+
+            position: static;
+
+        }
+
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .gallery-slider {
+
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+
+        .main-slider {
+
+            border-radius: 18px;
+
+
+            .main-img {
+
+                height: 360px;
+
+            }
+
+        }
+
+
+        .nav-btn {
+
+            width: 44px;
+
+            height: 44px;
+
+            font-size: 21px;
+
+        }
+
+
+        .prev {
+
+            left: 12px;
+
+        }
+
+
+        .next {
+
+            right: 12px;
+
+        }
+
+
+        .thumbs-wrapper {
+
+            gap: 9px;
+
+        }
+
+
+        .thumb {
+
+            flex-basis: 92px;
+
+            width: 92px;
+
+            height: 70px;
+
+            border-radius: 11px;
+
+        }
+
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .pName {
+
+        h1 {
+
+            padding: 12px 16px;
+
+            font-size: 25px;
+
+        }
+
+
+        .btn-edit-property {
+
+            width: 100%;
+
+            margin-top: 12px;
+
+        }
+
+    }
+
+
+    .gallery-slider {
+
+        .main-slider {
+
+            border-radius: 15px;
+
+
+            .main-img {
+
+                height: 280px;
+
+            }
+
+        }
+
+
+        .nav-btn {
+
+            width: 40px;
+
+            height: 40px;
+
+            font-size: 19px;
+
+        }
+
+
+        .prev {
+
+            left: 9px;
+
+        }
+
+
+        .next {
+
+            right: 9px;
+
+        }
+
+
+        .thumb {
+
+            flex-basis: 82px;
+
+            width: 82px;
+
+            height: 64px;
+
+        }
+
+    }
+
+
+    .whatsappFloat {
+
+        right: 16px;
+
+        bottom: 84px;
+
+        width: 54px;
+
+        height: 54px;
+
+
+        .whatsappIcon {
+
+            width: 54px;
+
+            height: 54px;
+
+
+            i {
+
+                font-size: 26px;
+
+            }
+
+        }
+
+
+        .whatsappDot {
+
+            top: 3px;
+
+            right: 3px;
+
+        }
+
+
+        &:hover {
+
+            width: 54px;
+
+            border-radius: 50%;
+
+            transform:
+                translateY(-2px);
+
+
+            .whatsappText {
+
+                max-width: 0;
+
+                margin-left: 0;
+
+                opacity: 0;
+
+            }
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .gallery-slider {
+
+        .fade-effect {
+
+            transition: none;
+
+        }
+
+
+        .thumb {
+
+            transition: none;
+
+
+            img {
+
+                transition: none;
+
+            }
+
+        }
+
+
+        .nav-btn {
+
+            transition: none;
+
+        }
+
+    }
+
+
+    .whatsappPulse {
+
+        animation: none;
+
+    }
+
+}

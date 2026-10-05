@@ -1,0 +1,738 @@
+@use "abstracts/variables" as *;
+@use "base/reset";
+@use "base/base";
+@use "components/cards";
+
+
+/*==================================================
+    MOBILE NAV
+==================================================*/
+
+.mobile-nav {
+
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+
+    background-color: $whiteColor;
+
+    border-radius: 20px;
+
+    padding: 10px 5px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.10);
+
+    z-index: 999;
+
+    backface-visibility: hidden;
+
+
+    .nav-item {
+
+        flex: 1;
+
+        text-align: center;
+
+        text-decoration: none;
+
+        color: $colorP;
+
+        font-size: 14px;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 4px;
+
+        padding: 8px 0;
+
+        border-radius: 12px;
+
+        transition:
+            background-color .3s ease,
+            color .3s ease,
+            transform .3s ease;
+
+
+        i {
+
+            font-size: 20px;
+
+        }
+
+
+        &:hover {
+
+            transform: translateY(-2px);
+
+        }
+
+
+        &.active {
+
+            background-color: $primaryColor;
+
+            color: $whiteColor;
+
+            font-weight: 500;
+
+        }
+
+    }
+
+}
+
+
+/*==================================================
+    MAIN CONTAINER
+==================================================*/
+
+.main-container {
+
+
+    /*==============================================
+        HEADER / GENERAL
+    ==============================================*/
+
+    .search-input {
+
+        width: 250px;
+
+        border-radius: 10px;
+
+        padding: 10px;
+
+        border: none;
+
+        background-color: $gray;
+
+    }
+
+
+    .add-btn {
+
+        border-radius: 10px;
+
+        padding: 10px 20px;
+
+        background-color: $primaryColor;
+
+        border: none;
+
+        color: $whiteColor;
+
+        transition:
+            background-color .25s ease,
+            transform .25s ease;
+
+
+        &:hover {
+
+            background-color: $complementaryColor;
+
+            transform: translateY(-2px);
+
+        }
+
+    }
+
+
+    /*==============================================
+        PROFILE DROPDOWN
+    ==============================================*/
+
+    .avatar-dropdown {
+
+
+        .avatar {
+
+            width: 45px;
+            height: 45px;
+
+            cursor: pointer;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            transition:
+                transform .3s ease;
+
+            backface-visibility: hidden;
+
+
+            img {
+
+                width: 100%;
+                height: 100%;
+
+                object-fit: cover;
+
+                display: block;
+
+            }
+
+
+            &:hover {
+
+                transform: scale(1.05);
+
+            }
+
+        }
+
+
+        .custom-dropdown {
+
+            border: none;
+
+            border-radius: 14px;
+
+            padding: 10px;
+
+            min-width: 200px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.12);
+
+
+            .dropdown-header {
+
+                display: flex;
+
+                flex-direction: column;
+
+                padding: 10px 15px;
+
+
+                strong {
+
+                    font-size: 16px;
+
+                }
+
+
+                small {
+
+                    color: #888;
+
+                    font-size: 13px;
+
+                }
+
+            }
+
+
+            .dropdown-item {
+
+                display: flex;
+
+                align-items: center;
+
+                gap: 10px;
+
+                border-radius: 10px;
+
+                padding: 10px 12px;
+
+                transition:
+                    background-color .2s ease,
+                    transform .2s ease;
+
+
+                i {
+
+                    font-size: 18px;
+
+                }
+
+
+                &:hover {
+
+                    background-color: #f5f5f5;
+
+                    transform: translateX(3px);
+
+                }
+
+            }
+
+
+            .logout {
+
+                color: #dc3545;
+
+
+                &:hover {
+
+                    background-color:
+                        rgba(220, 53, 69, 0.10);
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    /*==============================================
+        TITLE
+    ==============================================*/
+
+    .title {
+
+        font-size: 35px;
+
+        font-weight: 700;
+
+        color: $primaryColor;
+
+        line-height: 1.2;
+
+    }
+
+
+    .properties-container {
+        margin-bottom: 120px;
+    }
+
+    /*==============================================
+        STATISTICS CARDS
+    ==============================================*/
+
+    .property-card {
+
+        border-radius: 16px;
+
+        padding: 25px 30px;
+
+        box-shadow:
+            0 2px 10px rgba(0, 0, 0, 0.05);
+
+
+        .card-label {
+
+            font-size: 18px;
+
+            letter-spacing: 1px;
+
+            color: $whiteColor;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .card-number,
+        .card-numberInactive {
+
+            font-size: 35px;
+
+            font-weight: 700;
+
+        }
+
+
+        .card-number {
+
+            color: $whiteColor;
+
+        }
+
+
+        .card-numberInactive {
+
+            color: $primaryColor;
+
+        }
+
+
+        .icon-box {
+
+            width: 70px;
+            height: 70px;
+
+            border-radius: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 1.5rem;
+
+
+            &.active {
+
+                background-color: $whiteColor;
+
+                color: $primaryColor;
+
+            }
+
+
+            &.inactive {
+                background-color: $complementaryColor;
+                color: $whiteColor;
+
+            }
+
+        }
+
+
+        &.activeProperty {
+
+            background-color: $primaryColor;
+
+        }
+
+
+        &.inactiveProperty {
+
+            background-color: $gray;
+
+
+            .card-label {
+
+                color: $colorP;
+
+            }
+
+        }
+
+    }
+
+
+    /*==============================================
+        SEARCH
+    ==============================================*/
+
+    .search-container {
+
+        width: 100%;
+
+
+        .search-box {
+
+            background-color: $gray;
+
+            border-radius: 16px;
+
+            padding: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+
+            border: 1px solid transparent;
+
+            transition:
+                border-color .3s ease,
+                transform .3s ease;
+
+
+            &:focus-within {
+
+                border-color: $primaryColor;
+
+                transform: translateY(-2px);
+
+            }
+
+
+            .search-icon {
+
+                font-size: 20px;
+
+                color: $primaryColor;
+
+                margin-right: 10px;
+
+            }
+
+
+            input {
+
+                border: none;
+
+                outline: none;
+
+                flex: 1;
+
+                font-size: 16px;
+
+                background-color: transparent;
+
+
+                &::placeholder {
+
+                    color: #aaa;
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    /*==============================================
+        PROPERTY CARD WRAPPER
+    ==============================================*/
+
+    .propertyCard-wrapper {
+
+        position: relative;
+
+        display: block;
+
+        width: 100%;
+
+    }
+
+
+    /*==============================================
+        EDIT PROPERTY
+    ==============================================*/
+
+    .edit-property {
+
+        position: absolute;
+
+        top: 25px;
+
+        right: 22px;
+
+        z-index: 100;
+
+        width: 42px;
+
+        height: 42px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 0;
+
+        margin: 0;
+
+        background-color: $whiteColor;
+
+        color: $primaryColor;
+
+        border: none;
+
+        border-radius: 11px;
+
+        text-decoration: none;
+
+        box-shadow:
+            0 5px 15px rgba(0, 0, 0, 0.15);
+
+        opacity: 1;
+
+        visibility: visible;
+
+        transform: translate3d(0, 0, 0);
+
+        transition:
+            background-color .25s ease,
+            color .25s ease,
+            transform .25s ease,
+            box-shadow .25s ease;
+
+
+        i {
+
+            font-size: 19px;
+
+            line-height: 1;
+
+        }
+
+
+        &:hover {
+
+            background-color: $primaryColor;
+
+            color: $whiteColor;
+
+            transform: translate3d(0, -2px, 0);
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.18);
+
+        }
+
+
+        &:focus-visible {
+
+            outline: 2px solid $complementaryColor;
+
+            outline-offset: 3px;
+
+        }
+
+
+        &:active {
+
+            transform: translate3d(0, 0, 0);
+
+        }
+
+    }
+
+
+    /*==============================================
+        PROPERTY CARD
+        Mantener la tarjeta debajo del botón
+    ==============================================*/
+
+    .propertyCard-wrapper .propertyCard {
+
+        position: relative;
+
+        display: block;
+
+        width: 100%;
+
+    }
+
+}
+
+
+/*==================================================
+    NO SEARCH RESULTS
+==================================================*/
+
+#noSearchResults {
+
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    color: #777;
+
+
+    i {
+
+        font-size: 50px;
+
+        color: $primaryColor;
+
+    }
+
+
+    h4 {
+
+        color: $colorP;
+
+        font-weight: 600;
+
+    }
+
+
+    p {
+
+        margin-bottom: 0;
+
+        color: #888;
+
+    }
+
+}
+
+
+/*==================================================
+    MOBILE
+==================================================*/
+
+@media (max-width: 767px) {
+
+
+    .main-container {
+
+
+        .add-btn,
+        .avatar {
+
+            display: none;
+
+        }
+
+
+        .title {
+
+            font-size: 28px;
+
+        }
+
+
+        .property-card {
+            padding: 20px;
+
+            .card-label {
+
+                font-size: 16px;
+
+            }
+
+
+            .card-number,
+            .card-numberInactive {
+
+                font-size: 30px;
+
+            }
+
+
+            .icon-box {
+
+                width: 58px;
+                height: 58px;
+
+                border-radius: 14px;
+
+            }
+
+        }
+
+
+        .edit-property {
+
+            top: 27px;
+            right: 18px;
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 10px;
+
+
+            i {
+
+                font-size: 17px;
+
+            }
+
+        }
+
+    }
+
+}

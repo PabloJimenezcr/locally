@@ -1,0 +1,506 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #fff;
+  font-family: "Jost", sans-serif;
+}
+body p {
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  color: #010101;
+}
+body button {
+  font-family: "Jost", sans-serif;
+}
+body h1,
+body h2,
+body h4,
+body h5,
+body h6 {
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1.5px;
+}
+body a {
+  text-decoration: none;
+}
+body textarea {
+  resize: none;
+}
+body .iconTitles {
+  width: 50px;
+}
+body .btnHome {
+  border: 2px solid #334d20;
+  color: #010101;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: all 0.4s ease-in;
+}
+body .btnHome:hover {
+  background-color: #334d20;
+  color: #fff;
+}
+
+.propertyCard {
+  display: block;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 8px rgba(44, 60, 47, 0.1);
+  transition: 0.3s;
+  text-decoration: none;
+  color: initial;
+}
+.propertyCard:hover {
+  transform: translateY(-8px);
+  color: #010101;
+}
+.propertyCard .propertyImg {
+  position: relative;
+  margin-top: 15px;
+}
+.propertyCard .propertyImg img {
+  width: 95%;
+  filter: brightness(0.8);
+  border-radius: 10px;
+}
+.propertyCard .propertyImg .badges {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  gap: 8px;
+}
+.propertyCard .propertyImg .badges p {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #fff;
+}
+.propertyCard .propertyImg .badges .featured {
+  background: #334d20;
+}
+.propertyCard .propertyImg .badges .sale {
+  background: #0a3452;
+}
+.propertyCard .propertyImg .badges .inactive {
+  background-color: #0a3452;
+}
+.propertyCard .propertyImg .location {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  color: #fff;
+  font-size: 15px;
+}
+.propertyCard .bodyCard {
+  padding: 18px;
+}
+.propertyCard .bodyCard h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.propertyCard .bodyCard .propertyFeatures {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+.propertyCard .bodyCard .propertyFeatures p {
+  font-size: 17px;
+}
+.propertyCard .bodyCard .propertyFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+  font-size: 17px;
+}
+.propertyCard .bodyCard .propertyFooter .agent {
+  display: flex;
+  align-items: center;
+}
+.propertyCard .bodyCard .propertyFooter .agent img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/*==================================================
+    MOBILE NAV
+==================================================*/
+.mobile-nav {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 10px 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  backface-visibility: hidden;
+}
+.mobile-nav .nav-item {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: #010101;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  border-radius: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.mobile-nav .nav-item i {
+  font-size: 20px;
+}
+.mobile-nav .nav-item:hover {
+  transform: translateY(-2px);
+}
+.mobile-nav .nav-item.active {
+  background-color: #334d20;
+  color: #fff;
+  font-weight: 500;
+}
+
+/*==================================================
+    MAIN CONTAINER
+==================================================*/
+.main-container {
+  /*==============================================
+      HEADER / GENERAL
+  ==============================================*/
+}
+.main-container .search-input {
+  width: 250px;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+  background-color: #E5E5E5;
+}
+.main-container .add-btn {
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: #334d20;
+  border: none;
+  color: #fff;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.main-container .add-btn:hover {
+  background-color: #0a3452;
+  transform: translateY(-2px);
+}
+.main-container {
+  /*==============================================
+      PROFILE DROPDOWN
+  ==============================================*/
+}
+.main-container .avatar-dropdown .avatar {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  backface-visibility: hidden;
+}
+.main-container .avatar-dropdown .avatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.main-container .avatar-dropdown .avatar:hover {
+  transform: scale(1.05);
+}
+.main-container .avatar-dropdown .custom-dropdown {
+  border: none;
+  border-radius: 14px;
+  padding: 10px;
+  min-width: 200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+.main-container .avatar-dropdown .custom-dropdown .dropdown-header {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+}
+.main-container .avatar-dropdown .custom-dropdown .dropdown-header strong {
+  font-size: 16px;
+}
+.main-container .avatar-dropdown .custom-dropdown .dropdown-header small {
+  color: #888;
+  font-size: 13px;
+}
+.main-container .avatar-dropdown .custom-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px 12px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.main-container .avatar-dropdown .custom-dropdown .dropdown-item i {
+  font-size: 18px;
+}
+.main-container .avatar-dropdown .custom-dropdown .dropdown-item:hover {
+  background-color: #f5f5f5;
+  transform: translateX(3px);
+}
+.main-container .avatar-dropdown .custom-dropdown .logout {
+  color: #dc3545;
+}
+.main-container .avatar-dropdown .custom-dropdown .logout:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+}
+.main-container {
+  /*==============================================
+      TITLE
+  ==============================================*/
+}
+.main-container .title {
+  font-size: 35px;
+  font-weight: 700;
+  color: #334d20;
+  line-height: 1.2;
+}
+.main-container .properties-container {
+  margin-bottom: 120px;
+}
+.main-container {
+  /*==============================================
+      STATISTICS CARDS
+  ==============================================*/
+}
+.main-container .property-card {
+  border-radius: 16px;
+  padding: 25px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.main-container .property-card .card-label {
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.main-container .property-card .card-number,
+.main-container .property-card .card-numberInactive {
+  font-size: 35px;
+  font-weight: 700;
+}
+.main-container .property-card .card-number {
+  color: #fff;
+}
+.main-container .property-card .card-numberInactive {
+  color: #334d20;
+}
+.main-container .property-card .icon-box {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+.main-container .property-card .icon-box.active {
+  background-color: #fff;
+  color: #334d20;
+}
+.main-container .property-card .icon-box.inactive {
+  background-color: #0a3452;
+  color: #fff;
+}
+.main-container .property-card.activeProperty {
+  background-color: #334d20;
+}
+.main-container .property-card.inactiveProperty {
+  background-color: #E5E5E5;
+}
+.main-container .property-card.inactiveProperty .card-label {
+  color: #010101;
+}
+.main-container {
+  /*==============================================
+      SEARCH
+  ==============================================*/
+}
+.main-container .search-container {
+  width: 100%;
+}
+.main-container .search-container .search-box {
+  background-color: #E5E5E5;
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.main-container .search-container .search-box:focus-within {
+  border-color: #334d20;
+  transform: translateY(-2px);
+}
+.main-container .search-container .search-box .search-icon {
+  font-size: 20px;
+  color: #334d20;
+  margin-right: 10px;
+}
+.main-container .search-container .search-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+  background-color: transparent;
+}
+.main-container .search-container .search-box input::-moz-placeholder {
+  color: #aaa;
+}
+.main-container .search-container .search-box input::placeholder {
+  color: #aaa;
+}
+.main-container {
+  /*==============================================
+      PROPERTY CARD WRAPPER
+  ==============================================*/
+}
+.main-container .propertyCard-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.main-container {
+  /*==============================================
+      EDIT PROPERTY
+  ==============================================*/
+}
+.main-container .edit-property {
+  position: absolute;
+  top: 25px;
+  right: 22px;
+  z-index: 100;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  color: #334d20;
+  border: none;
+  border-radius: 11px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.main-container .edit-property i {
+  font-size: 19px;
+  line-height: 1;
+}
+.main-container .edit-property:hover {
+  background-color: #334d20;
+  color: #fff;
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+.main-container .edit-property:focus-visible {
+  outline: 2px solid #0a3452;
+  outline-offset: 3px;
+}
+.main-container .edit-property:active {
+  transform: translate3d(0, 0, 0);
+}
+.main-container {
+  /*==============================================
+      PROPERTY CARD
+      Mantener la tarjeta debajo del botón
+  ==============================================*/
+}
+.main-container .propertyCard-wrapper .propertyCard {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+/*==================================================
+    NO SEARCH RESULTS
+==================================================*/
+#noSearchResults {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  color: #777;
+}
+#noSearchResults i {
+  font-size: 50px;
+  color: #334d20;
+}
+#noSearchResults h4 {
+  color: #010101;
+  font-weight: 600;
+}
+#noSearchResults p {
+  margin-bottom: 0;
+  color: #888;
+}
+
+/*==================================================
+    MOBILE
+==================================================*/
+@media (max-width: 767px) {
+  .main-container .add-btn,
+  .main-container .avatar {
+    display: none;
+  }
+  .main-container .title {
+    font-size: 28px;
+  }
+  .main-container .property-card {
+    padding: 20px;
+  }
+  .main-container .property-card .card-label {
+    font-size: 16px;
+  }
+  .main-container .property-card .card-number,
+  .main-container .property-card .card-numberInactive {
+    font-size: 30px;
+  }
+  .main-container .property-card .icon-box {
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+  }
+  .main-container .edit-property {
+    top: 27px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  .main-container .edit-property i {
+    font-size: 17px;
+  }
+}/*# sourceMappingURL=dashboard.css.map */

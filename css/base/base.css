@@ -1,0 +1,43 @@
+body {
+  overflow-x: hidden;
+  background-color: #fff;
+  font-family: "Jost", sans-serif;
+}
+body p {
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  color: #010101;
+}
+body button {
+  font-family: "Jost", sans-serif;
+}
+body h1,
+body h2,
+body h4,
+body h5,
+body h6 {
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1.5px;
+}
+body a {
+  text-decoration: none;
+}
+body textarea {
+  resize: none;
+}
+body .iconTitles {
+  width: 50px;
+}
+body .btnHome {
+  border: 2px solid #334d20;
+  color: #010101;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: all 0.4s ease-in;
+}
+body .btnHome:hover {
+  background-color: #334d20;
+  color: #fff;
+}/*# sourceMappingURL=base.css.map */

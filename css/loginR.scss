@@ -1,0 +1,357 @@
+@use "abstracts/variables" as *;
+@use "base/reset";
+@use "base/base";
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primaryColor;
+  padding: 20px;
+}
+
+.container-auth {
+  position: relative;
+  width: 1000px;
+  max-width: 100%;
+  min-height: 600px;
+  background-color: $whiteColor;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+}
+
+
+.form-container {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    transform 0.6s ease,
+    opacity 0.6s ease;
+  backface-visibility: hidden;
+
+  &.sign-in {
+    left: 0;
+    z-index: 2;
+  }
+
+  &.reset-password {
+    left: auto;
+  }
+
+  &.sign-up {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+.container-auth.active {
+  .sign-in {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  .sign-up {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+  }
+
+  .overlay-container {
+    transform: translateX(-100%);
+  }
+
+  .overlay {
+    transform: translateX(50%);
+  }
+}
+
+form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  small {
+    color: $colorP;
+    font-size: 13px;
+  }
+}
+
+.profile-preview {
+  width: 92px;
+  height: 92px;
+  border: 2px dashed $primaryColor;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background-color: rgba(10, 52, 82, 0.06);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: $primaryColor;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  &.has-image {
+    border-style: solid;
+
+    img {
+      display: block;
+    }
+
+    .profile-placeholder {
+      display: none;
+    }
+  }
+
+  .profile-placeholder {
+    color: $primaryColor;
+    font-size: 30px;
+  }
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding: 14px 45px 14px 14px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    outline: none;
+    background-color: $whiteColor;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:focus {
+      border-color: $primaryColor;
+    }
+
+    &:focus+label,
+    &:not(:placeholder-shown)+label {
+      top: -8px;
+      font-size: 11px;
+      background-color: $whiteColor;
+      padding-inline: 4px;
+      color: $primaryColor;
+    }
+  }
+
+  label {
+    position: absolute;
+    left: 12px;
+    top: 40%;
+    transform: translateY(-50%);
+    color: #888;
+    transition:
+      top 0.3s ease,
+      font-size 0.3s ease,
+      color 0.3s ease;
+    pointer-events: none;
+  }
+
+  .toggle-pass {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    color: $colorP;
+    cursor: pointer;
+    box-shadow: none;
+
+    &:hover {
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: none;
+    }
+  }
+}
+
+
+
+
+button {
+  padding: 10px 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: $primaryColor;
+  color: $whiteColor;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease;
+  z-index: 100;
+  backface-visibility: hidden;
+}
+
+.overlay {
+  position: relative;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background:
+    linear-gradient(135deg, rgba(10, 52, 82, 0.9), rgba(10, 52, 82, 0.6)),
+    url("../img/registerPhoto.webp");
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+  backface-visibility: hidden;
+}
+
+.overlay-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $whiteColor;
+  text-align: center;
+}
+
+.overlay-left {
+  left: 0;
+}
+
+.overlay-right {
+  right: 0;
+}
+
+.ghost {
+  background-color: transparent;
+  border: 1px solid $whiteColor;
+}
+
+.switch-text {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+
+  button {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    color: $complementaryColor;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: none;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+      color: $primaryColor;
+    }
+  }
+}
+
+
+.forgot-password {
+
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+
+    color: $primaryColor;
+    font-size: 14px;
+    font-weight: 500;
+
+    text-decoration: none;
+    transition: .25s;
+
+    &:hover {
+
+      color: $complementaryColor;
+      text-decoration: underline;
+
+    }
+
+  }
+
+}
+
+
+@media (max-width: 768px) {
+  .container-auth {
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+  }
+
+  .form-container {
+    width: 100%;
+    position: absolute;
+    transform: none !important;
+  }
+
+  .sign-in,
+  .sign-up {
+    pointer-events: none;
+  }
+
+  .container-auth:not(.active) .sign-in {
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+  }
+
+  .container-auth.active .sign-up {
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+  }
+
+  .overlay-container {
+    display: none;
+  }
+}

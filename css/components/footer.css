@@ -1,0 +1,130 @@
+.footer {
+  color: #fff;
+  background-color: #334d20;
+}
+.footer p,
+.footer li,
+.footer small {
+  color: #fff;
+}
+.footer .footer-title {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.footer .footer-title::after {
+  content: "";
+  width: 40px;
+  height: 2px;
+  background-color: #fff;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+}
+.footer .social-icons a {
+  border: 1px solid #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #334d20;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  backface-visibility: hidden;
+}
+.footer .social-icons a:hover {
+  transform: translateY(-3px);
+}
+.footer .footer-links {
+  padding-left: 0;
+}
+.footer .footer-links a {
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.footer .footer-links a:hover {
+  transform: translateX(6px);
+}
+.footer .footer-links li {
+  list-style: none;
+  margin-bottom: 0.7rem;
+  padding-left: 0;
+  transition: transform 0.3s ease;
+}
+.footer .footer-links li i {
+  transition: transform 0.3s ease;
+}
+.footer .post img {
+  width: 200px;
+  height: 120px;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.footer .footer-bottom {
+  background-color: #334d20;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}
+.footer .footer-bottom a {
+  color: #fff;
+  margin-left: 1rem;
+}
+.footer .contactInfo a {
+  color: #fff;
+}
+
+.scrollTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+  z-index: 999;
+  border-radius: 50%;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+.scrollTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.scrollTop:hover {
+  transform: scale(1.08);
+}
+.scrollTop svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.scrollTop .water-bg {
+  fill: #0752c5;
+  opacity: 0.18;
+}
+.scrollTop .water {
+  fill: #0752c5;
+}
+.scrollTop .arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 26px;
+  color: #010101;
+  pointer-events: none;
+  transition: color 0.25s ease;
+  z-index: 2;
+}
+.scrollTop.is-covered .arrow {
+  color: #fff;
+}/*# sourceMappingURL=footer.css.map */

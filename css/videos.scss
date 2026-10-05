@@ -1,0 +1,227 @@
+@use './abstracts/variables' as *;
+@use './base/reset';
+@use './base/base';
+@use './base/typography';
+@use './components/header';
+@use './components/footer';
+
+
+// ======================
+// SECTION
+// ======================
+
+.cinematic-showcases {
+    background: $bg;
+
+    .section-badge {
+        display: inline-block;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        color: $primaryColor;
+        font-family: $secondaryFont;
+    }
+
+    .section-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-family: $secondaryFont;
+        color: $colorP;
+        margin-bottom: 25px;
+        line-height: 1.1;
+    }
+
+    .section-description {
+        color: rgba($colorP, .7);
+        font-size: 1rem;
+        line-height: 1.9;
+        max-width: 760px;
+    }
+}
+
+
+// ======================
+// VIDEO CARD
+// ======================
+
+.video-card {
+    background: $whiteColor;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba($gray, .7);
+    transition: .4s ease;
+    height: 100%;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .08);
+    }
+
+    .video-thumbnail {
+        position: relative;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s ease;
+        }
+    }
+
+    &:hover img {
+        transform: scale(1.04);
+    }
+}
+
+// ======================
+// FEATURED CARD
+// ======================
+
+.featured-card {
+
+    .video-thumbnail {
+        height: 650px;
+
+        @media(max-width: 991px) {
+            height: 450px;
+        }
+
+        @media(max-width: 576px) {
+            height: 320px;
+        }
+    }
+
+    .video-content {
+        background: $primaryColor;
+        padding: 30px;
+    }
+
+    .video-meta {
+        color: rgba($whiteColor, .7);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .video-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 20px;
+
+        @media(max-width: 768px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    .video-title {
+        color: $whiteColor;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        font-family: $secondaryFont;
+    }
+
+    .video-director {
+        color: rgba($whiteColor, .75);
+        margin: 0;
+    }
+
+    .video-duration {
+        color: $whiteColor;
+        font-size: 14px;
+    }
+}
+
+// ======================
+// SMALL CARDS
+// ======================
+
+.video-body {
+    padding: 25px;
+}
+
+.video-title-sm {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: $colorP;
+    font-family: $secondaryFont;
+}
+
+.video-description {
+    color: rgba($colorP, .7);
+    line-height: 1.7;
+    font-size: .95rem;
+}
+
+// ======================
+// PLAY BUTTON
+// ======================
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: none;
+    background: rgba($whiteColor, .92);
+    color: $primaryColor;
+    font-size: 22px;
+    transition: .3s ease;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+        background: $primaryColor;
+        color: $whiteColor;
+    }
+
+    &.small {
+        width: 70px;
+        height: 70px;
+        font-size: 18px;
+    }
+}
+
+
+
+.video-time {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, .7);
+    color: $whiteColor;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+}
+
+// ======================
+// MODAL
+// ======================
+
+.video-modal {
+
+    .modal-content {
+        background: transparent;
+        border: none;
+    }
+
+    .video-close {
+        position: absolute;
+        top: -50px;
+        right: 0;
+        background-color: $whiteColor;
+        opacity: 1;
+        z-index: 10;
+    }
+
+    iframe {
+        width: 100%;
+        border: none;
+    }
+}

@@ -692,7 +692,13 @@ $canEdit =
 
                                 <strong>
 
-                                    <?= (int) $property["bathrooms"]; ?>
+                                    <?= rtrim(
+                                        rtrim(
+                                            number_format((float) $property["bathrooms"], 1, ".", ""),
+                                            "0"
+                                        ),
+                                        "."
+                                    ); ?>
 
                                 </strong>
 

@@ -61,10 +61,9 @@ $bedrooms = filter_var(
 
 
 $bathrooms = filter_var(
-    $_POST["bathrooms"] ?? 0,
-    FILTER_VALIDATE_INT
+    $_POST["bathrooms"] ?? "",
+    FILTER_VALIDATE_FLOAT
 );
-
 
 $description =
     trim($_POST["description"] ?? "");
@@ -662,8 +661,7 @@ try {
 
     $stmt->bind_param(
 
-        "isssddssiisssssdd",
-
+        "isssddssidsssssdd",
         $userId,
         $name,
         $province,

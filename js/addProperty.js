@@ -73,75 +73,106 @@ function alertBox(icon, title, text) {
     COUNTERS
 ==================================================*/
 
-document
-    .querySelectorAll(".counter")
-    .forEach(counter => {
 
-        const value =
-            counter.querySelector("span");
+/* ==================================================
+   BEDROOMS AND BATHROOMS COUNTERS
+================================================== */
 
-        const minus =
-            counter.querySelector(".btn-minus");
+const BATHROOM_STEPS = [
+    0,
+    1,
+    1.5,
+    2,
+    2.5,
+    3,
+    3.5,
+    4,
+    4.5,
+    5,
+    5.5,
+    6,
+    7,
+    8
+];
 
-        const plus =
-            counter.querySelector(".btn-plus");
+function formatCounterValue(number) {
+    return Number.isInteger(number)
+        ? String(number)
+        : number.toFixed(1);
+}
 
-        const hiddenInput =
-            counter.parentElement.querySelector(
-                'input[type="hidden"]'
+document.querySelectorAll(".counter").forEach(counter => {
+    const value = counter.querySelector("span");
+    const minus = counter.querySelector(".btn-minus");
+    const plus = counter.querySelector(".btn-plus");
+
+    const hiddenInput = counter.parentElement.querySelector(
+        'input[type="hidden"]'
+    );
+
+    if (!value || !minus || !plus || !hiddenInput) {
+        return;
+    }
+
+    const isBathroomCounter = hiddenInput.id === "bathrooms";
+
+    function updateCounter(direction) {
+        let currentValue = Number(hiddenInput.value);
+
+        if (!Number.isFinite(currentValue)) {
+            currentValue = 0;
+        }
+
+        let nextValue;
+
+        if (isBathroomCounter) {
+            let currentIndex = BATHROOM_STEPS.findIndex(
+                step => Math.abs(step - currentValue) < 0.001
             );
 
-
-        /* MINUS */
-
-        minus.addEventListener(
-            "click",
-            () => {
-
-                let number =
-                    Number(hiddenInput.value) || 0;
-
-
-                if (number > 0) {
-
-                    number--;
-
-                }
-
-
-                value.textContent =
-                    number;
-
-                hiddenInput.value =
-                    number;
-
+            // Compatibility with older saved values.
+            if (currentIndex === -1) {
+                currentIndex = BATHROOM_STEPS.reduce(
+                    (bestIndex, step, index, steps) => {
+                        return Math.abs(step - currentValue) <
+                            Math.abs(steps[bestIndex] - currentValue)
+                            ? index
+                            : bestIndex;
+                    },
+                    0
+                );
             }
-        );
 
+            const nextIndex = Math.max(
+                0,
+                Math.min(
+                    BATHROOM_STEPS.length - 1,
+                    currentIndex + direction
+                )
+            );
 
-        /* PLUS */
+            nextValue = BATHROOM_STEPS[nextIndex];
 
-        plus.addEventListener(
-            "click",
-            () => {
+        } else {
+            // Bedrooms remain whole numbers.
+            nextValue = Math.max(0, currentValue + direction);
+        }
 
-                let number =
-                    Number(hiddenInput.value) || 0;
+        const formattedValue = formatCounterValue(nextValue);
 
+        hiddenInput.value = formattedValue;
+        value.textContent = formattedValue;
+    }
 
-                number++;
-
-
-                value.textContent =
-                    number;
-
-                hiddenInput.value =
-                    number;
-
-            }
-        );
-
+    minus.addEventListener("click", () => {
+        updateCounter(-1);
     });
+
+    plus.addEventListener("click", () => {
+        updateCounter(1);
+    });
+});
+
 
 
 /*==================================================
@@ -218,9 +249,7 @@ function addTag() {
     if (!value) {
 
         return;
-
     }
-
 
     if (value.length < 2) {
 
@@ -273,7 +302,6 @@ function addTag() {
         );
 
     }
-
 
     tags.push(value);
 
